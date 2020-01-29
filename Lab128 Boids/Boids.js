@@ -13,11 +13,12 @@ run(){
   this.update();
 }
 render(){
-  //fill(this.clr)
-  //ellipse(this.loc.x, this.loc.y, this.w, this.w);
+  var distance;
   for(var i = 0; i < boids.length; i++){
-    if(this.loc.dist(boids[i] < 200 )){
-      line(this.loc.x,this.loc.y,boid[i].x, boid[i].y)
+    distance = this.loc.dist(boids[i].loc)
+    if(distance < 200){
+      stroke(this.clr)
+      line(this.loc.x, this.loc.y, boids[i].loc.x, boids[i].loc.y)
     }
   }
 }
@@ -31,22 +32,6 @@ render(){
   }
 
 update(){
-  //var distToMainBall
-  //var distToMainBallrep
-//  if(this.id >= 0){
-//    distToMainBallrep = this.loc.dist(mainBallrep.loc);
-//    distToMainBall = this.loc.dist(mainBall.loc);
-//    if(distToMainBall < 800){
-//      this.acc = p5.Vector.sub(mainBall.loc, this.loc);
-//      this.acc.normalize();
-//      this.acc.mult(.07);
-//    }
-//    if(distToMainBall < 150){
-//      this.acc = p5.Vector.sub(mainBallrep.loc, this.loc);
-//      this.acc.normalize();
-//      this.acc.mult(.5);
-//    }
-//  }
   this.vel.limit(5);
   this.loc.add(this.vel);
   this.vel.add(this.acc);
