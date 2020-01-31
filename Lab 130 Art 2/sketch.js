@@ -1,33 +1,33 @@
 //  Andrew Mills
-// 	1/28/19
-// Boids
+// 	8/28/19
+// Vectors
 
 var boids = []
-var mainBoid;
+var mainBoid =[]
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(255, 255, 255);
-  loadBoids(3);
+  background(20, 20, 20,);
+  loadObjects(650);
 }
 //  The draw function is called @ 30 fps
 function draw() {
-  background(255,255,255);
-  runBoids();
+  background(5,5,5,80);
+  runObjects();
 
 }
 
-function loadBoids(n){
+function loadObjects(n){
+  mainBoid = new Boid(width/2, height/2, random(-1, 1), random(-1, 1), -1);
     for(var i =0; i < n; i++){
-      boids[i] = new Boid(random(width), random(height), random(-2, 2), random(-2, 2), 25, i);
+      boids[i] = new Boid(random(width), random(height), random(-2, 2), random(-2, 2), i);
   }
-      mainBoid = new Boid(random(width), random(height), random(-2, 2), random(-2, 2), 50, -1)
 }
 
-function runBoids(){
+function runObjects(){
+  mainBoid.run();
     for(var i = 0; i < boids.length; i++){
       boids[i].run();
   }
-  mainBoid.run();
 
 }
